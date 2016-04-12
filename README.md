@@ -1,48 +1,58 @@
-![](http://i.imgur.com/CqXcsZ9.png)
+# Angular 2 QuickStart Source
 
-This is a base template for Angular 2. It contains the core files you will need when starting an Angular 2 project.
-To get started, follow the instructions below.
+This repository holds the TypeScript source code of the [angular.io quickstart](https://angular.io/docs/ts/latest/quickstart.html),
+the foundation for most of the documentation samples and potentially a good starting point for your application.
 
-### Install Node.js and npm
+## Create a new project based on the QuickStart
 
-Download the latest version of Node.js if you do not already have it installed on your machine. This download will also
-include the latest version of npm.
+Clone this repo into new project folder (e.g., `my-proj`).
+```bash
+git clone  https://github.com/angular/quickstart  my-proj
+cd my-proj
+```
 
-https://nodejs.org/en/download/
+We have no intention of updating the source on `angular/quickstart`.
+Discard everything "git-like" by deleting the `.git` folder.
+```bash
+rm -rf .git
+```
 
-### Download this Repository
+### Create a new git repo
+You could [start writing code](#start-development) now and throw it all away when you're done.
+If you'd rather preserve your work under source control, consider taking the following steps.
 
-Clone this repo into a new project folder. You may also download it as a ZIP file.
+Initialize this project as a *local git repo* and make the first commit:
+```bash
+git init
+git add .
+git commit -m "Initial commit"
+```
 
-https://github.com/buckyroberts/angular-2-template.git
+Create a *remote repository* for this project on the service of your choice.
 
-### Install Libraries and Dependencies
+Grab its address (e.g. *`https://github.com/<my-org>/my-proj.git`*) and push the *local repo* to the *remote*.
+```bash
+git remote add origin <repo-address>
+git push -u origin master
+```
+### Start development
 
-Once you have the files downloaded, navigate into the root project directory and run the following command. This will
-install all libraries and dependencies.
+Install the npm packages described in the `package.json` and verify that it works:
 
-`npm install`
+```bash
+npm install
+npm start
+```
+You're ready to write your application.
 
-### Run the Project
+Remember the npm scripts in `package.json`:
 
-Now you can start the TypeScript compiler in watch mode and run lite-server with automatic refreshing.
-
-`npm start`
-
-***
-
-### Angular 2
-
-- [angular.io](https://angular.io/) - Official website for Angular and Angular 2.
-- [Getting Started](https://angular.io/docs/ts/latest/quickstart.html) - Quick guide on how to get up and running.
-- [Forum](https://thenewboston.com/forum/category.php?id=111) - For Angular 2 related questions, news, and discussion.
-- [Reddit](https://www.reddit.com/r/Angular2/) - Subreddit for Google's next iteration of AngularJS.
-
-### Other
-
-- [thenewboston](https://thenewboston.com/)
-- [Facebook](https://www.facebook.com/TheNewBoston-464114846956315/)
-- [Twitter](https://twitter.com/bucky_roberts)
-- [Google+](https://plus.google.com/+BuckyRoberts)
-- [reddit](https://www.reddit.com/r/thenewboston/)
-- [Donate](https://www.patreon.com/thenewboston)
+* `npm start` - runs the compiler and a server at the same time, both in "watch mode".
+* `npm run tsc` - runs the TypeScript compiler once.
+* `npm run tsc:w` - runs the TypeScript compiler in watch mode; the process keeps running, awaiting changes to TypeScript files and re-compiling when it sees them.
+* `npm run lite` - runs the [lite-server](https://www.npmjs.com/package/lite-server), a light-weight, static file server, written and maintained by
+[John Papa](https://github.com/johnpapa) and
+[Christopher Martin](https://github.com/cgmartin)
+with excellent support for Angular apps that use routing.
+* `npm run typings` - runs the typings tool.
+* `npm run postinstall` - called by *npm* automatically *after* it successfully completes package installation. This script installs the TypeScript definition files this app requires.
